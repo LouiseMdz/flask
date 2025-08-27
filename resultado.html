@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado</title>
+</head>
+<body>
+  <h1>Resultado</h1>
+    <p>Resistência equivalente: {{ Req }}</p>
+    <p>Resistência equivalente não calculada.</p>
+ 
+
+  <p>Resultados:</p>
+    <ul>
+        <li>
+          {{ r.get("Resistor", "R?") }}: 
+          R = {{ r.get("Resistencia (Ω)", "?") }} Ω, 
+          V = {{ r.get("Tensao (V)", "?") }} V, 
+          I = {{ r.get("Corrente (A)", "?") }} A, 
+          P = {{ r.get("Potencia (W)", "?") }} W
+        </li>
+    </ul>
+    <p>Nenhum resultado encontrado.</p>
+
+  <a href="{{ url_for('index') }}">🔄 Calcular novamente</a>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cálculo de Circuito</title>
+  <script>
+    function gerarCampos() {
+      const qtd = document.getElementById("qtd").value;
+      const container = document.getElementById("campos");
+      container.innerHTML = "";
+
+      for (let i = 1; i <= qtd; i++) {
+        const label = document.createElement("label");
+        label.textContent = "Resistor R" + i + " (Ω): ";
+        const input = document.createElement("input");
+        input.type = "number";
+        input.name = "R" + i;
+        input.step = "any";
+        input.required = true;
+
+        container.appendChild(label);
+        container.appendChild(input);
+        container.appendChild(document.createElement("br"));
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Calculadora de Circuitos</h1>
+
+  <form action="/" method="POST">
+  <label for="V">Digite a tensão da fonte:</label>
+  <input type="number" id="V" name="V" placeholder="110" min="1" max="999" required><br><br>
+
+  <label for="qtd">Quantidade de resistores: </label>
+  <input type="number" id="qtd" name="qtd" placeholder="1" min="1" max="99" required>
+  <button type="button" onclick="gerarCampos()">Gerar</button>
+  <br><br>
+
+  <div id="campos"></div>
+
+  <label for="tipo">Tipo de associação:</label>
+  <select id="tipo" name="tipo" required>
+    <option value="serie">Série</option>
+    <option value="paralelo">Paralelo</option>
+  </select>
+  <br><br>
+
+  <button type="submit">Calcular</button>
+</form>
+</body>
+</html>
